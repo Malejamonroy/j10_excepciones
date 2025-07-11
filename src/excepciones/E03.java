@@ -5,8 +5,15 @@ import java.sql.SQLException;
 
 public class E03 {
 	public static void main(String[] args) {
-		metodo(-5);
+		try {
+			metodo(-5);
+		} catch (SQLException e) {
+			System.out.println("Esto arregla el problema");
+			e.printStackTrace();
+		}
+		System.err.println("Continua el programa..."); //err lo pone en rojoo 
 		
+		otroMetodo(66);
 	}
 
 	
@@ -31,10 +38,17 @@ public class E03 {
 			if (valor == 0)
 				throw new IllegalArgumentException();
 			if(valor <0) {
-				throw new SQLException();
+				throw new SQLException("Esto ha explotado!!!....");//las excepciones pueden tener mensajes 
 		}
 		
-
+			
+			//Esta es la pila de llamadas que hemos hecho 
+//			Esto arregla el problema
+//			java.sql.SQLException: Esto ha explotado!!!....
+//				at excepciones.E03.problematico(E03.java:39)
+//				at excepciones.E03.metodo(E03.java:28)
+//				at excepciones.E03.main(E03.java:9)
+//			Continua el programa...
 	}
 
 }
